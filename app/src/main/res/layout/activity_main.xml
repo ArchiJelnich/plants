@@ -54,12 +54,12 @@
                 android:gravity="left"
                 android:textSize="26dp" />
 
-            <CheckBox android:id="@+id/check_setting_enable"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onCheckboxClicked"
-                android:layout_alignParentRight="true"
-                android:button="@drawable/checkbox_view"/>
+                <CheckBox
+                    android:id="@+id/check_setting_enable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:button="@drawable/checkbox_view" />
 
         </RelativeLayout>
 
@@ -82,13 +82,13 @@
                     android:id="@+id/check_setting_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="14:00"
-                    android:textColor="#5A5656"
-                    android:padding="10dp"
-                    android:gravity="left"
-                    android:textSize="26dp"
+                    android:layout_alignParentRight="true"
                     android:background="@drawable/rounded_corner_grey"
-                    android:layout_alignParentRight="true"/>
+                    android:gravity="left"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textColor="#5A5656"
+                    android:textSize="26dp" />
 
             </RelativeLayout>
 
@@ -107,10 +107,10 @@
                     android:gravity="left"
                     android:textSize="26dp" />
 
-                <CheckBox android:id="@+id/check_setting_every"
+                <CheckBox
+                    android:id="@+id/check_setting_every"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="onCheckboxClicked"
                     android:layout_alignParentRight="true"
                     android:button="@drawable/checkbox_view"/>
 
@@ -121,7 +121,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:paddingTop="16dp"
-            android:paddingBottom="160dp"
+            android:paddingBottom="40dp"
             android:orientation="vertical">
             <TextView
                 android:id="@+id/text_setting_region"
@@ -137,15 +137,24 @@
                 android:id="@+id/check_setting_region"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Moscow"
-                android:textColor="#5A5656"
-                android:padding="10dp"
-                android:gravity="left"
-                android:textSize="26dp"
+                android:layout_alignParentRight="true"
                 android:background="@drawable/rounded_corner_grey"
-                android:layout_alignParentRight="true"/>
+                android:gravity="left"
+                android:padding="10dp"
+                android:textColor="#5A5656"
+                android:textSize="26dp" />
 
         </RelativeLayout>
+
+
+            <ListView
+                android:id="@+id/region_list"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner_grey"
+                android:padding="10dp"
+                android:textColor="#000000"
+                android:textSize="10dp" />
 
             <Button
                 android:id="@+id/button_support"
@@ -155,7 +164,7 @@
                 android:backgroundTint="#C4C4C4"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="Build version 1.1 Press to contact developer"
+                android:text=""
                 android:textColor="#000"
                 android:textSize="10dp" />
 

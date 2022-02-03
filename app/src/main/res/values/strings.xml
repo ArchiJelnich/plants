@@ -1,3 +1,38 @@
 <resources>
     <string name="app_name">Plants</string>
+    <string name="email">support@plants</string>
+    <string name="release">1.0</string>
+    <string-array name="cities">
+        <item>Moscow</item>
+        <item>Saint Petersburg</item>
+        <item>Novosibirsk</item>
+        <item>Yekaterinburg</item>
+        <item>Kazan</item>
+        <item>Nizhny Novgorod</item>
+        <item>Chelyabinsk</item>
+        <item>Samara</item>
+        <item>Omsk</item>
+        <item>Rostov-on-Don</item>
+        <item>Ufa</item>
+        <item>Krasnoyarsk</item>
+        <item>Voronezh</item>
+        <item>Perm</item>
+        <item>Volgograd</item>
+        <item>Krasnodar</item>
+        <item>Saratov</item>
+        <item>Tyumen</item>
+        <item>Tolyatti</item>
+        <item>Izhevsk</item>
+        <item>Barnaul</item>
+        <item>Ulyanovsk</item>
+        <item>Irkutsk</item>
+        <item>Khabarovsk</item>
+        <item>Makhachkala</item>
+        <item>Yaroslavl</item>
+        <item>Vladivostok</item>
+        <item>Orenburg</item>
+        <item>Tomsk</item>
+        <item>Kemerovo</item>
+        <item>Not listed :(</item>
+    </string-array>
 </resources>
