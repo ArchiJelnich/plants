@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:background="#A0D943">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:paddingLeft="16dp"
+        android:paddingBottom="16dp"
+        android:layout_gravity="top"
+        android:background="@drawable/rounded_corner_layout"
+        >
+        <TextView
+            android:id="@+id/text_header"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            android:textColor="#000"
+            android:padding="10dp"
+            android:gravity="center"
+            android:textSize="30dp"
+            android:background="@drawable/rounded_corner"/>
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingTop="16dp"
+            android:layout_gravity="top"
+            >
+
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <TextView
+                android:id="@+id/text_setting_enable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enable nootification"
+                android:textColor="#000"
+                android:padding="10dp"
+                android:gravity="left"
+                android:textSize="26dp" />
+
+            <CheckBox android:id="@+id/check_setting_enable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onCheckboxClicked"
+                android:layout_alignParentRight="true"
+                android:button="@drawable/checkbox_view"/>
+
+        </RelativeLayout>
+
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/text_setting_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Notification time"
+                    android:textColor="#000"
+                    android:padding="10dp"
+                    android:gravity="left"
+                    android:textSize="26dp" />
+
+                <TextView
+                    android:id="@+id/check_setting_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="14:00"
+                    android:textColor="#5A5656"
+                    android:padding="10dp"
+                    android:gravity="left"
+                    android:textSize="26dp"
+                    android:background="@drawable/rounded_corner_grey"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/text_setting_every"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reminder every hour"
+                    android:textColor="#000"
+                    android:padding="10dp"
+                    android:gravity="left"
+                    android:textSize="26dp" />
+
+                <CheckBox android:id="@+id/check_setting_every"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onCheckboxClicked"
+                    android:layout_alignParentRight="true"
+                    android:button="@drawable/checkbox_view"/>
+
+            </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:paddingBottom="160dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/text_setting_region"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Region"
+                android:textColor="#000"
+                android:padding="10dp"
+                android:gravity="left"
+                android:textSize="26dp" />
+
+            <TextView
+                android:id="@+id/check_setting_region"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Moscow"
+                android:textColor="#5A5656"
+                android:padding="10dp"
+                android:gravity="left"
+                android:textSize="26dp"
+                android:background="@drawable/rounded_corner_grey"
+                android:layout_alignParentRight="true"/>
+
+        </RelativeLayout>
+
+            <Button
+                android:id="@+id/button_support"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="#C4C4C4"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Build version 1.1 Press to contact developer"
+                android:textColor="#000"
+                android:textSize="10dp" />
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>
+
