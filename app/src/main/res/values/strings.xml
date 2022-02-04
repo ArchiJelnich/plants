@@ -2,6 +2,9 @@
     <string name="app_name">Plants</string>
     <string name="email">support@plants</string>
     <string name="release">1.0</string>
+
+    <string name="API_KEY">8c94a69f-8a43-48a0-9bbb-a1c60a8c99e0</string>
+
     <string-array name="cities">
         <item>Moscow</item>
         <item>Saint Petersburg</item>

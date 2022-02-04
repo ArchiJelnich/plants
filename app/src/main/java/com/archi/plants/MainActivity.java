@@ -12,8 +12,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.*;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -36,11 +36,14 @@ public class MainActivity extends AppCompatActivity {
     int notMin;
     String region;
     SharedPreferences sPref;
-    private Object AdapterView;
+    final String TAG = "LOGS_A";
+
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         CheckBox check_setting_enable = findViewById(R.id.check_setting_enable);
@@ -54,6 +57,28 @@ public class MainActivity extends AppCompatActivity {
         sPref = getPreferences(MODE_PRIVATE);
         setting_notification_enabled = sPref.getBoolean(SETTING_NOTIFICATION_ENABLED, true);
         setting_every_hour = sPref.getBoolean(SETTING_EVERY_HOUR, true);
+
+
+        if (setting_notification_enabled==true)
+        {check_setting_enable.setChecked(true);}
+        else
+        {check_setting_enable.setChecked(false);}
+
+        if (setting_every_hour==true)
+        {check_setting_every.setChecked(true);}
+        else
+        {check_setting_every.setChecked(false);}
+
+
+        Log.d(TAG, "OnCreate setting_notification_enabled:" + setting_notification_enabled);
+        Log.d(TAG, "OnCreate setting_every_hour:" + setting_every_hour);
+
+
+
+
+
+
+
         notHour = sPref.getInt(SETTING_NOTIFICATION_HOUR, 14);
         notMin = sPref.getInt(SETTING_NOTIFICATION_MIN, 00);
         region = sPref.getString(SETTING_REGION, "Moscow");
@@ -74,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
         check_setting_region.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,23 +120,38 @@ public class MainActivity extends AppCompatActivity {
 
         check_setting_enable.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                sPref = getPreferences(MODE_PRIVATE);
+                SharedPreferences.Editor ed = sPref.edit();
                 if(isChecked) {
                     setting_notification_enabled = true;
                 }
                 else {
                     setting_notification_enabled = false;
                 }
+                ed.putBoolean(SETTING_NOTIFICATION_ENABLED, setting_notification_enabled);
+                ed.commit();
+                Log.d(TAG, "OnFunc setting_notification_enabled:" + setting_notification_enabled);
+                Log.d(TAG, "OnFunc_pref setting_notification_enabled:" + sPref.getBoolean(SETTING_NOTIFICATION_ENABLED, true));
+
+
             }
         });
 
         check_setting_every.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
                 if(isChecked) {
                     setting_every_hour = true;
                 }
                 else {
                     setting_every_hour = false;
                 }
+                sPref = getPreferences(MODE_PRIVATE);
+                SharedPreferences.Editor ed = sPref.edit();
+                ed.putBoolean(SETTING_EVERY_HOUR, setting_every_hour);
+                ed.commit();
+                Log.d(TAG, "OnFunc setting_every_hour:" + setting_every_hour);
+                Log.d(TAG, "OnFunc_pref setting_every_hour:" + sPref.getBoolean(SETTING_EVERY_HOUR, true));
             }
         });
     }
@@ -125,7 +167,11 @@ public class MainActivity extends AppCompatActivity {
                 {check_setting_time.setText(notHour + ":" + "0" + notMin );}
                 else
                 {check_setting_time.setText(notHour + ":" + notMin );}
-
+                sPref = getPreferences(MODE_PRIVATE);
+                SharedPreferences.Editor ed = sPref.edit();
+                ed.putInt(SETTING_NOTIFICATION_HOUR, notHour);
+                ed.putInt(SETTING_NOTIFICATION_MIN, notMin);
+                ed.commit();;
 
             }
         };
@@ -149,8 +195,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
     public void onclick_region() {
 
         ListView region_list = (ListView) findViewById(R.id.region_list);
@@ -169,26 +213,15 @@ public class MainActivity extends AppCompatActivity {
                 TextView check_setting_region = (TextView) findViewById(R.id.check_setting_region);
                 check_setting_region.setText(text);
                 region_list.setVisibility(View.GONE);
+                sPref = getPreferences(MODE_PRIVATE);
+                SharedPreferences.Editor ed = sPref.edit();
+                ed.putString(SETTING_REGION, text);
+                ed.commit();
 
             }}
 
             );};
 
 
-
-
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        sPref = getPreferences(MODE_PRIVATE);
-        SharedPreferences.Editor ed = sPref.edit();
-        ed.putBoolean(SETTING_NOTIFICATION_ENABLED, setting_notification_enabled);
-        ed.putBoolean(SETTING_NOTIFICATION_HOUR, setting_every_hour);
-        ed.putInt(SETTING_NOTIFICATION_HOUR, notHour);
-        ed.putInt(SETTING_NOTIFICATION_MIN, notMin);
-        ed.putString(SETTING_REGION, region);
-        ed.commit();;
-    }
 
     }
