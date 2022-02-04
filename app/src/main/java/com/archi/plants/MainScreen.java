@@ -1,4 +1,6 @@
 /* To-do:
+Create styles
+Recreate images
 Remake settings logo
 No watering for today
 Watering for today scrollable
@@ -6,6 +8,7 @@ Watering for today
 Plus and minus watering
 To my garden and back
 Yandex-API hum (region + without key + cash + exception)
+When was missed recalculate
 
 */
 

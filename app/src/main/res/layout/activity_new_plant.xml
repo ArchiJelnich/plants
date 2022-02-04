@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:orientation="horizontal"
+    android:background="#A0D943"
+
+    >
+
+    <LinearLayout
+        android:id="@+id/l1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:background="@drawable/rounded_corner_layout"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:layout_marginBottom="20dp"
+        android:paddingBottom="16dp">
+
+
+
+            <TextView
+                android:id="@+id/text_header"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner"
+                android:padding="10dp"
+                android:text="New plant"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="#000"
+                android:textSize="36dp" />
+
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:paddingTop="16dp"
+                android:layout_gravity="top"
+                >
+
+                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/image_new_plant"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:background="@drawable/def_ava"/>
+                </RelativeLayout>
+
+                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="16dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/text_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Name:"
+                        android:textColor="#000"
+                        android:padding="10dp"
+                        android:gravity="left"
+                        android:textSize="26dp" />
+
+                    <EditText
+                        android:id="@+id/text_name_in"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:gravity="left"
+                        android:textSize="26dp"
+                        android:inputType="text"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="16dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/text_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Type:"
+                        android:textColor="#000"
+                        android:padding="10dp"
+                        android:gravity="left"
+                        android:textSize="26dp" />
+
+                    <EditText
+                        android:id="@+id/text_type_in"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:gravity="left"
+                        android:textSize="26dp"
+                        android:inputType="text"/>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/text_pllan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Watering plan:"
+                    android:textColor="#000"
+                    android:padding="10dp"
+                    android:layout_gravity="center"
+                    android:textSize="26dp" />
+
+                <ListView
+                    android:id="@+id/plan_list"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_corner_grey"
+                    android:padding="10dp"
+                    android:textColor="#000000"
+                    android:textSize="10dp" />
+
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+
+</RelativeLayout>
