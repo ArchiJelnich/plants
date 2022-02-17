@@ -38,4 +38,17 @@
         <item>Kemerovo</item>
         <item>Not listed :(</item>
     </string-array>
+
+    <string-array name="w_plan">
+        <item>Everyday</item>
+        <item>Every 2 days</item>
+        <item>Every 3 days</item>
+        <item>Every 4 days</item>
+        <item>Every 5 days</item>
+        <item>Every 6 days</item>
+        <item>Every week</item>
+        <item>Every 2 weeks</item>
+    </string-array>
+
+
 </resources>

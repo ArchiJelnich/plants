@@ -54,11 +54,11 @@ public class MainScreen extends AppCompatActivity {
         String key = getString(R.string.API_KEY);
 
         Button settings = (Button) findViewById(R.id.settings);
+        Button button_my_garden = (Button) findViewById(R.id.button_my_garden);
         TextView humidity = (TextView) findViewById(R.id.humidity);
         ImageView yandex_logo = (ImageView) findViewById(R.id.yandex_logo);
         Log.d ("WebLog", "Hi");
-        DBHelper dbHelper;
-        dbHelper = new DBHelper(this);
+
 
     /*    humidity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +76,13 @@ public class MainScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onclick_settings();
+            }
+        });
+
+        button_my_garden.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onclick_button_my_garden();
             }
         });
 
@@ -113,6 +120,12 @@ public class MainScreen extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onclick_button_my_garden() {
+        Intent intent = new Intent(this, MyGarden.class);
+        startActivity(intent);
+    }
+
+
     public void onclick_yandex_logo() {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://yandex.ru/pogoda"));
         startActivity(browserIntent);
@@ -121,32 +134,6 @@ public class MainScreen extends AppCompatActivity {
 
  }
 
-class DBHelper extends SQLiteOpenHelper {
-
-    public DBHelper(Context context) {
-        // конструктор суперкласса
-        super(context, "appDB", null, 1);
-    }
-
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table plants ("
-                + "id integer primary key autoincrement,"
-                + "name text,"
-                + "type text,"
-                + "waterplan integer,"
-                + "image blob" + ");");
-        db.execSQL("create table waterings ("
-                + "id integer primary key autoincrement,"
-                + "date integer,"
-                + "status integer" + ");");
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-    }
-}
 
 
 

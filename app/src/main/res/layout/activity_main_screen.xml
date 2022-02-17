@@ -69,8 +69,9 @@
         android:paddingBottom="10dp"
         android:id="@+id/l2">
 
-        <TextView
+        <Button
             android:layout_width="fill_parent"
+            android:id="@+id/button_my_garden"
             android:layout_height="wrap_content"
             android:text="My garden"
             android:textSize="36dp"
@@ -78,6 +79,7 @@
             android:padding="10dp"
             android:gravity="center"
             android:background="@drawable/rounded_corner"
+            android:theme="@style/MyButton"
             />
 
     </LinearLayout>

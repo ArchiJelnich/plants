@@ -124,14 +124,15 @@
             android:paddingTop="16dp"
             android:paddingBottom="40dp"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/text_setting_region"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="left"
+                android:padding="10dp"
                 android:text="Region"
                 android:textColor="#000"
-                android:padding="10dp"
-                android:gravity="left"
                 android:textSize="26dp" />
 
             <TextView
