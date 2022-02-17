@@ -18,7 +18,10 @@ package com.archi.plants;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
@@ -54,6 +57,8 @@ public class MainScreen extends AppCompatActivity {
         TextView humidity = (TextView) findViewById(R.id.humidity);
         ImageView yandex_logo = (ImageView) findViewById(R.id.yandex_logo);
         Log.d ("WebLog", "Hi");
+        DBHelper dbHelper;
+        dbHelper = new DBHelper(this);
 
     /*    humidity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,6 +120,36 @@ public class MainScreen extends AppCompatActivity {
 
 
  }
+
+class DBHelper extends SQLiteOpenHelper {
+
+    public DBHelper(Context context) {
+        // конструктор суперкласса
+        super(context, "appDB", null, 1);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL("create table plants ("
+                + "id integer primary key autoincrement,"
+                + "name text,"
+                + "type text,"
+                + "waterplan integer,"
+                + "image blob" + ");");
+        db.execSQL("create table waterings ("
+                + "id integer primary key autoincrement,"
+                + "date integer,"
+                + "status integer" + ");");
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+    }
+}
+
+
+
 
 class HttpClient {
 
