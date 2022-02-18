@@ -53,7 +53,37 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         holder.image.setImageBitmap(bitmap);
         holder.name.setText(model.getUName());
         holder.type.setText(model.getType());
-        holder.wat.setText(String.valueOf(model.getWat()));
+
+        switch (String.valueOf(model.getWat()))
+        {
+            case  ("2"):
+                holder.wat.setText("Every 2 days");
+                break;
+            case  ("3"):
+                holder.wat.setText("Every 3 days");
+                break;
+            case  ("4"):
+                holder.wat.setText("Every 4 days");
+                break;
+            case  ("5"):
+                holder.wat.setText("Every 5 days");
+                break;
+            case  ("6"):
+                holder.wat.setText("Every 6 days");
+                break;
+            case  ("7"):
+                holder.wat.setText("Every week");
+                break;
+            case  ("14"):
+                holder.wat.setText("Every 2 week");
+                break;
+            default:
+                holder.wat.setText("Everyday");
+                break;
+
+        }
+
+
             }
 
     @Override

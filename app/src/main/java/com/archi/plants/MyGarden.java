@@ -15,13 +15,16 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -50,13 +53,11 @@ public class MyGarden extends AppCompatActivity {
 
         dBmain=new DBmain(this);
 
-
+        Log.v("ArchiDebug", "Oncreate ");
         displayData();
 
 
-
         recyclerView.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
-
 
 
         new_plant.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +71,17 @@ public class MyGarden extends AppCompatActivity {
 
 
 }
+
+
+    protected void onResume() {
+
+        super.onResume();
+        displayData();
+        recyclerView.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
+    }
+
+
+
 
     public void onclick_new_plant() {
         Intent intent = new Intent(this, NewPlant.class);

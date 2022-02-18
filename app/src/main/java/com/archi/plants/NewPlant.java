@@ -33,6 +33,9 @@ import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -45,9 +48,11 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 
 public class NewPlant extends AppCompatActivity {
 
@@ -57,6 +62,9 @@ public class NewPlant extends AppCompatActivity {
     final String TABLENAME = "plants";
     public SharedPreferences sPref;
     public int id;
+    boolean image_set = false;
+    final int PIC_CROP = 1;
+
 
     public static final int CAMERA_REQUEST=100;
     public static final int STORAGE_REQUEST=101;
@@ -79,6 +87,20 @@ public class NewPlant extends AppCompatActivity {
         check_wat.setText("Everyday");
 
         dBmain=new DBmain(this);
+
+        EditText text_name_in = (EditText) findViewById(R.id.text_name_in);
+        EditText text_type_in = (EditText) findViewById(R.id.text_type_in);
+
+
+
+
+
+
+
+
+
+
+
 
         // editData();
         imagePick();
@@ -186,7 +208,14 @@ public class NewPlant extends AppCompatActivity {
     }
 
     private void pickFromGallery() {
-        CropImage.activity().start(this);
+        //CropImage.activity().start(this);
+
+
+
+        CropImage.activity().setAspectRatio(1,1).start(NewPlant.this);
+
+        Log.v("ArchiDebug", "pickFromGallery");
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -213,8 +242,18 @@ public class NewPlant extends AppCompatActivity {
                 EditText text_type_in = (EditText) findViewById(R.id.text_type_in);
                 String name = text_name_in.getText().toString();
                 String type = text_type_in.getText().toString();
+
+                Log.v("ArchiDebug", "name b " + name);
+
+
+                name = name.replaceAll("[^a-zA-Z0-9]","");
+                type = type.replaceAll("[^a-zA-Z0-9]","");
+
+                Log.v("ArchiDebug", "name a " + name);
+
                 TextView check_wat = (TextView) findViewById(R.id.check_wat);
                 int waterplan;
+
 
                 switch (check_wat.getText().toString())
                 {
@@ -247,7 +286,9 @@ public class NewPlant extends AppCompatActivity {
 
 
 
-                //cv.put("image",ImageViewToByte(image));
+                if (image_set==false)
+                {
+                    Log.v("ArchiDebug", "if");
 
                 Resources res = getResources();
                 Drawable drawable = res.getDrawable(R.drawable.def_ava);
@@ -255,8 +296,26 @@ public class NewPlant extends AppCompatActivity {
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
                 byte[] bitMapData = stream.toByteArray();
+                    cv.put("image",bitMapData);
+                }
+                else {
+                    cv.put("image", ImageViewToByte(image));
+                    Log.v("ArchiDebug", "else");
 
-                cv.put("image",bitMapData);
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
                 cv.put("name",name);
 
                 Log.v("ArchiDebug", "name " + name);
@@ -323,12 +382,27 @@ public class NewPlant extends AppCompatActivity {
 
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
+        if (requestCode==CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE ){
             CropImage.ActivityResult result=CropImage.getActivityResult(data);
+            Log.v("ArchiDebug", "in 1");
+
             if (resultCode==RESULT_OK){
+                Log.v("ArchiDebug", "in 2");
                 Uri resultUri=result.getUri();
                 ImageView image = (ImageView) findViewById(R.id.image_new_plant);
-                Picasso.with(this).load(resultUri).into(image);
+                image_set = true;
+
+                Bitmap bitmap = null;
+                try {
+                    bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), resultUri);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                bitmap = Bitmap.createScaledBitmap(bitmap, 120, 120, true);
+                image.setImageBitmap(bitmap);
+
+
+                //Picasso.with(this).load(resultUri).into(image);
             }
         }
     }
