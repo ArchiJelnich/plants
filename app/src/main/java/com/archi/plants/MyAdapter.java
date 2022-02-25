@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -103,6 +104,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             name=(TextView)itemView.findViewById(R.id.text_name);
             type=(TextView)itemView.findViewById(R.id.text_type);
             wat=(TextView)itemView.findViewById(R.id.text_wat);
+            itemView.setOnCreateContextMenuListener(this::onCreateContextMenu);
+
+
+
         }
+
+
+
+        public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+
+            menu.setHeaderTitle("Select The Action");
+            menu.add(0, 1, 0, "Edit");//groupId, itemId, order, title
+            menu.add(0, 2, 0, "Delete");
+
+        }
+
     }
 }
